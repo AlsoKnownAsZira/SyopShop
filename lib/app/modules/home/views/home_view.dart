@@ -46,21 +46,19 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
             Expanded(
-child: AlignedGridView.count(
-  itemCount: 100,
-  crossAxisCount: 2,
-
-  crossAxisSpacing: 20,
-  mainAxisSpacing: 20,
-   itemBuilder: (context, index) {
-  return Container(
-    color: Colors.red,
-    height: Get.width / 8,
-    width: 100,
-  );
-},)
-
-                )
+                child: AlignedGridView.count(
+              itemCount: 100,
+              crossAxisCount: 2,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20,
+              itemBuilder: (context, index) {
+                return Container(
+                  color: Colors.red,
+                  height: Get.width / 8,
+                  width: 100,
+                );
+              },
+            ))
           ],
         ));
   }
