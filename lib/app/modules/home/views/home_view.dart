@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'package:get/get.dart';
+import 'package:syopshop/app/modules/home/controllers/productcontroller.dart';
+import 'package:syopshop/app/modules/home/views/product_tile.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -46,19 +48,15 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
             Expanded(
-                child: AlignedGridView.count(
-              itemCount: 100,
-              crossAxisCount: 2,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
-              itemBuilder: (context, index) {
-                return Container(
-                  color: Colors.red,
-                  height: Get.width / 8,
-                  width: 100,
-                );
-              },
-            ))
+                child: Obx(() => AlignedGridView.count(
+                      itemCount: controller.productList.length,
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 20,
+                      itemBuilder: (context, index) {
+                        return ProductTile(controller.productList[index]);
+                      },
+                    )))
           ],
         ));
   }

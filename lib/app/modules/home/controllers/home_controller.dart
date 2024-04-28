@@ -1,23 +1,21 @@
 import 'package:get/get.dart';
+import 'package:syopshop/app/models/product.dart';
+import 'package:syopshop/app/services/remote_services.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+ var productList = <Product>[].obs;
 
-  final count = 0.obs;
-  @override
   void onInit() {
+    fetchProducts();
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+
+  void fetchProducts() async{
+    var products = await RemoteServices.fetchProducts();
+    if(products != null){
+      productList.value = products;
+    }
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

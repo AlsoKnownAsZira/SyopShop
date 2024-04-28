@@ -1,4 +1,10 @@
+import 'dart:convert';
+
+import 'package:get/get.dart';
+
+List<Product> productFromJson(String str) => List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));
 class Product {
+  RxBool isFavorite = false.obs;
   final int id;
   final String brand;
   final String name;
@@ -9,7 +15,7 @@ class Product {
   final String productLink;
   final String websiteLink;
   final String description;
-  final int rating;
+  final double? rating;
   final dynamic category;
   final String productType;
   final List<dynamic> tagList;
